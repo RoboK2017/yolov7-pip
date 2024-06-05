@@ -888,6 +888,7 @@ class autoShape(nn.Module):
     conf = 0.25  # NMS confidence threshold
     iou = 0.45  # NMS IoU threshold
     classes = None  # (optional list) filter by class
+    agnostic_nms = True
 
     def __init__(self, model):
         super(autoShape, self).__init__()
@@ -948,7 +949,7 @@ class autoShape(nn.Module):
             t.append(time_synchronized())
 
             # Post-process
-            y = non_max_suppression(y, conf_thres=self.conf, iou_thres=self.iou, classes=self.classes)  # NMS
+            y = non_max_suppression(y, conf_thres=self.conf, iou_thres=self.iou, classes=self.classes, agnostic=self.agnostic_nms)  # NMS
             for i in range(n):
                 scale_coords(shape1, y[i][:, :4], shape0[i])
 
