@@ -1,6 +1,54 @@
+[project]
+name = "yolov7detect"
+version = "0.1.0"
+authors = [{name="kadirnar"}]
+license = "MIT"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+keywords = ["yolov7", "object-detection", "deep-learning", "pytorch", "torchvision"]
+description = "Packaged version of the Yolov7 repository"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.2.2",
+    "numpy>=1.18.5",
+    "opencv-python-headless>=4.1.1",
+    "pandas>=1.1.4",
+    "pillow>=7.1.2",
+    "pyyaml>=5.3.1",
+    "requests>=2.23.0",
+    "scipy>=1.4.1",
+    "seaborn>=0.11.0",
+    "torch>=1.7.0,!=1.12.0",
+    "torchvision>=0.8.1,!=0.13.0",
+    "tqdm>=4.41.0",
+]
+
+
 [tool.black]
 line-length = 120
 
 [tool.isort]
 line_length = 120
 profile = "black"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["yolov7"]
+
