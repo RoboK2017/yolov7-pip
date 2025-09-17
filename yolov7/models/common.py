@@ -9,7 +9,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from PIL import Image
-from torch.cuda import amp
 
 from yolov7.utils.datasets import letterbox
 from yolov7.utils.general import increment_path, make_divisible, non_max_suppression, scale_coords, xyxy2xywh
@@ -915,7 +914,7 @@ class autoShape(nn.Module):
         t = [time_synchronized()]
         p = next(self.model.parameters())  # for device and type
         if isinstance(imgs, torch.Tensor):  # torch
-            with amp.autocast(enabled=p.device.type != "cpu"):
+            with torch.amp.autocast(device_type='cuda', enabled=p.device.type != "cpu"):
                 return self.model(imgs.to(p.device).type_as(p), augment, profile)  # inference
 
         # Pre-process
@@ -943,7 +942,7 @@ class autoShape(nn.Module):
         x = torch.from_numpy(x).to(p.device).type_as(p) / 255.0  # uint8 to fp16/32
         t.append(time_synchronized())
 
-        with amp.autocast(enabled=p.device.type != "cpu"):
+        with torch.amp.autocast(device_type='cuda', enabled=p.device.type != "cpu"):
             # Inference
             y = self.model(x, augment, profile)[0]  # forward
             t.append(time_synchronized())
