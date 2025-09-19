@@ -1,6 +1,12 @@
 [project]
 name = "yolov7detect"
 version = "1.0.3"
+authors = [{name = "kadirnar"}]
+license = {text = "MIT"}
+description = "Packaged version of the Yolov7 repository"
+readme = "README.md"
+urls = {Homepage = "https://github.com/kadirnar/yolov7-pip"}
+requires-python = ">=3.6"
 dependencies = [
     "matplotlib>=3.2.2",
     "numpy>=1.18.5",
