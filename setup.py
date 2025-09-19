@@ -35,5 +35,4 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
     install_requires=get_requirements(),
-    keywords="machine-learning, deep-learning, pytorch, vision, image-classification, object-detection, yolov7, detector, yolov5",
 )
