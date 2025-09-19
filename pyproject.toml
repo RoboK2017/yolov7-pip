@@ -1,6 +1,6 @@
 [project]
 name = "yolov7detect"
-version = "1.0.3"
+version = "1.0.4"
 authors = [{name = "kadirnar"}]
 license = {text = "MIT"}
 description = "Packaged version of the Yolov7 repository"
